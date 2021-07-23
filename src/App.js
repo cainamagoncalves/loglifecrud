@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { InsertClients } from './pages/InsertClients'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-function App() {
+import 'react-toastify/dist/ReactToastify.css';
+
+import './styles/global.scss'
+import { LoginPage } from './pages/LoginPage'
+import { ToastContainer } from 'react-toastify';
+import { ClientsProvider } from './ClientsContexts';
+import { TableOfClients } from './pages/TableOfClients';
+import { useState } from 'react';
+import { EditClientModal } from './components/EditClientModal';
+
+export function App() {
+  const [isEditClientModalOpen, setEditClientModalOpen] = useState(false);
+
+  function handleIsEditClientModalOpen() {
+    setEditClientModalOpen(true);
+  }
+
+  function handleIsEditClientModalClose() {
+    setEditClientModalOpen(false);
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <ClientsProvider>
+        <Switch>
+          <Route path="/" exact component={LoginPage} />
+          <Route path="/home" component={InsertClients} />
+          <Route path="/clients" component={() => <TableOfClients handleOpenEditClientModal={handleIsEditClientModalOpen} />} />
+        </Switch>
+        <EditClientModal
+          isOpen={isEditClientModalOpen}
+          onRequestClose={handleIsEditClientModalClose}
+        />
+        <ToastContainer />
+      </ClientsProvider>
+    </BrowserRouter>
   );
 }
-
-export default App;

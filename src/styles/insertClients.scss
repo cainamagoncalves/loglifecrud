@@ -1,0 +1,69 @@
+form {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .personal-data {
+    margin-top: 2rem 0;
+
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+
+    select {
+      width: 50%;
+      border-radius: 0.25rem;
+      border: 1px solid #ccc;
+      border-radius: 0.25rem;
+      text-align: center;
+    }
+    
+    .radio {
+      width: 50%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .nameset {
+      width: 100%;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      input {
+        border-radius: 0.25rem;
+        border: 1px solid #ccc;
+        line-height: 2rem;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .name {
+        width: 45%;
+        input {
+          width: 100%;
+          display: block;
+        }
+      }
+
+      .second-param {
+        width: 45%;
+        align-self: flex-end;
+        input {
+          width: 100%;
+          display: block
+
+        }
+      }
+    }
+  }
+}
