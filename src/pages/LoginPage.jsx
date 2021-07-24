@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 
 
 import 'react-toastify/dist/ReactToastify.css';
+import { ClientsContext } from "../ClientsContexts";
 import '../styles/login.scss'
 
 export function LoginPage() {
+
+  const { registerUser } = useContext(ClientsContext)
+
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [pageRedirect, setPageRedirect] = useState(false)
@@ -18,6 +22,12 @@ export function LoginPage() {
         toast.warn("Preencha todos os campos!")
         return;
       } else {
+
+        registerUser({
+          username: username,
+          password: password,
+        })
+
         setPageRedirect(true)
       }
 

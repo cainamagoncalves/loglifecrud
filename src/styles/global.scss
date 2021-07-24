@@ -35,3 +35,25 @@ button {
   cursor: pointer;
 }
 
+.react-modal-overlay {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-modal-class {
+  width: 100%;
+  max-width: 978px;
+  background: #f5f5f5;
+  position: relative;
+  padding: 3rem;
+  border-radius: 0.25rem
+}

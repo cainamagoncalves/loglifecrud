@@ -10,11 +10,29 @@ export const ClientsContext = createContext({})
 export function ClientsProvider({children}) {
   const [clients, setClients] = useState([])
   const [editedClient, setEditedClient] = useState({})
+  const [user, setUser] = useState()
 
   useEffect(() => {
       api.get('/clients')
         .then(res => setClients(res.data))
+  }, [clients])
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('user');
+    if (loggedInUser) {
+      const foundUser = loggedInUser;
+      setUser(foundUser)
+    }
   }, [])
+
+  async function registerUser(clientInput) {
+    const response = await api.post('/login', clientInput)
+    const data = response.data
+    setUser(data)
+    localStorage.setItem('user', user)
+  }
+
+
 
   async function createClient(clientInput) {
     const response = await api.post('/clients', clientInput)
@@ -79,7 +97,7 @@ export function ClientsProvider({children}) {
   }
 
   return (
-    <ClientsContext.Provider value={{ clients, editedClient, createClient, removeClient, loadClient, editClient}}>
+    <ClientsContext.Provider value={{ clients, editedClient, createClient, removeClient, loadClient, editClient, registerUser}}>
       {children}
     </ClientsContext.Provider>
   );

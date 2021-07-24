@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ClientsContext } from "../ClientsContexts";
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 import { Header } from "../components/Header";
+// import ReactPaginate from "react-paginate"
 
 import '../styles/table.scss'
 

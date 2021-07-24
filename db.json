@@ -1,12 +1,24 @@
 {
   "clients": [
     {
-      "name": "asdadada",
-      "secondParamName": "asdada",
-      "useCar": false,
+      "name": "Jorge",
+      "secondParamName": "Henrique",
+      "useCar": true,
       "useTruck": false,
       "useMotorcycle": true,
-      "id": 2
+      "id": 2,
+      "clientType": "Pessoa Física",
+      "document": "12332145678",
+      "email": "jorge@henrique.com",
+      "phone": "1255556666",
+      "cep": "1230000",
+      "street": "Rua Teste",
+      "localNumber": "14",
+      "city": "Jacareí",
+      "stateName": "São Paulo",
+      "time": "12:00",
+      "date": "2021-07-27",
+      "status": "Ativo"
     },
     {
       "clientType": "Pessoa Jurídica",
@@ -27,6 +39,50 @@
       "useTruck": false,
       "useMotorcycle": true,
       "id": 3
+    },
+    {
+      "clientType": "Pessoa Jurídica",
+      "name": "Empresa teste",
+      "secondParamName": "Teste",
+      "document": "71767554312",
+      "email": "empresa@teste.com",
+      "phone": "1232224333",
+      "cep": "1230000",
+      "street": "R. Empresa",
+      "localNumber": "17",
+      "city": "Jacareí",
+      "stateName": "São Paulo",
+      "time": "15:00",
+      "date": "2021-08-12",
+      "status": "Ativo",
+      "useCar": false,
+      "useTruck": true,
+      "useMotorcycle": true,
+      "id": 4
+    },
+    {
+      "clientType": "Pessoa Física",
+      "name": "Leonardo",
+      "secondParamName": "Almeida",
+      "document": "12332145678",
+      "email": "leonardo@almeida.com",
+      "phone": "1234444555",
+      "cep": "1230000",
+      "street": "R. Falsa",
+      "localNumber": "16",
+      "city": "São Paulo",
+      "stateName": "São Paulo",
+      "time": "12:30",
+      "date": "2021-08-30",
+      "status": "Inativo",
+      "useCar": false,
+      "useTruck": true,
+      "useMotorcycle": false,
+      "id": 5
     }
-  ]
+  ],
+  "login": {
+    "username": "usuario@user.com",
+    "password": "mudar123"
+  }
 }

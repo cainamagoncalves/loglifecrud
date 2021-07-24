@@ -3,6 +3,8 @@ import Modal from 'react-modal'
 import { ClientsContext } from '../ClientsContexts';
 import { apiStates } from '../services/api';
 
+import '../styles/insertClients.scss'
+
 Modal.setAppElement('#root')
 
 
@@ -61,184 +63,261 @@ export function EditClientModal({isOpen, onRequestClose}) {
       <Modal
         isOpen={isOpen}
         onRequestClose={onRequestClose}
+        overlayClassName="react-modal-overlay"
+        className="react-modal-class"
       >
-    <h2>Você está editando {editedClient.name}</h2>
+    
 
-    <form onSubmit={handleEditClient}>
-      <select
-        defaultValue={editedClient.clientType}
-        onChange={handleInputChange}
-        name="clientType"
-        value={inputs.clientType}
-      >
-        <option value=""></option>
-        <option value="Pessoa Jurídica">Pessoa Jurídica</option>
-        <option value="Pessoa Física">Pessoa Física</option>
-      </select>
-      
-      <input
-        type="radio"
-        name="status"
-        defaultValue={editedClient.status}
-        checked={status === "Ativo"}
-        onChange={() => setStatus('Ativo')} /> Ativo
-      <input
-        type="radio"
-        name="status"
-        defaultValue={editedClient.status}
-        checked={status === "Inativo"}
-        onChange={() => setStatus('Inativo')} /> Inativo
+    <div id="insert">
+        <form onSubmit={handleEditClient}>
+          <div className="personal-data">
 
-      <input 
-        type="text" 
-        defaultValue={editedClient.name}
-        value={inputs.name}
-        name="name"
-        onChange={handleInputChange}
-      />
-      {inputs.clientType === "" ?
-        <label></label>
-        : inputs.clientType === 'Pessoa Jurídica' ?
-          <label>Nome Fantasia</label>
-          :
-          <label>Nome do Cliente</label>
-      }
-      <input 
-        type="text"
-        name="secondParamName"
-        defaultValue={editedClient.secondParamName}
-        value={inputs.secondParamName}
-        onChange={handleInputChange}
-      />
-      {inputs.clientType === "" ?
-        <label></label>
-        : inputs.clientType === 'Pessoa Jurídica' ?
-          <label>Razão Social</label>
-          :
-          <label>Sobrenome</label>
-      }
-      <input 
-        type="text" 
-        name="document"
-        defaultValue={editedClient.document}
-        value={inputs.document}
-        onChange={handleInputChange}
-      />
-      {inputs.clientType === "" ? 
-          <label></label> 
-          : inputs.clientType === 'Pessoa Jurídica' ?
-          <label>CNPJ</label>
-          :
-          <label>CPF</label>
-        }
+            <select
+              onChange={handleInputChange}
+              defaultValue={editedClient.clientType}
+              name="clientType"
+              value={inputs.clientType}
+            >
+              <option value=""></option>
+              <option value="Pessoa Jurídica">Pessoa Jurídica</option>
+              <option value="Pessoa Física">Pessoa Física</option>
+            </select>
 
-      <input 
-        type="email"
-        name="email" 
-        defaultValue={editedClient.email}
-        value={inputs.email}
-        onChange={handleInputChange} 
-      />
-      <label>E-mail</label>
+            <div className="radio">
+              <label className="radio-class">
+                <span className="radio-input">
+                  <input
+                    type="radio"
+                    defaultChecked={editedClient.status}
+                    checked={status === 'Ativo'}
+                    onChange={() => setStatus('Ativo')}
+                  />
+                  <span className="radio-label"> Ativo</span>
+                </span>
+              </label>
 
-      <input 
-        type="text" 
-        name="phone"
-        defaultValue={editedClient.phone}
-        value={inputs.phone}
-        onChange={handleInputChange}
-      />
-      <label>Telefone</label>
 
-      <input 
-        type="text"
-        name="cep" 
-        defaultValue={editedClient.cep}
-        value={inputs.cep}
-        onChange={handleInputChange}
-      />
-      <label>CEP</label>
+              <label className="radio-class">
+                <span className="radio-input">
+                  <input
+                    type="radio"
+                    defaultChecked={editedClient.status}
+                    checked={status === 'Inativo'}
+                    onChange={() => setStatus('Inativo')}
+                  />
+                  <span className="radio-label"> Inativo</span>
+                </span>
+              </label>
+            </div>
 
-      <input 
-        type="Rua" 
-        name="street"
-        defaultValue={editedClient.street}
-        value={inputs.street}
-        onChange={handleInputChange}  
-      />
-      <label>Rua</label>
+            <div className="nameset">
+              <div className="name">
+                {inputs.clientType === "" ?
+                  <label></label>
+                  : inputs.clientType === 'Pessoa Jurídica' ?
+                    <label>Empresa</label>
+                    :
+                    <label>Nome</label>
+                }
+                <input
+                  type="text"
+                  defaultValue={editedClient.name}
+                  value={inputs.name}
+                  name="name"
+                  onChange={handleInputChange}
+                />
 
-      <input 
-        type="text" 
-        name="localNumber"
-        defaultValue={editedClient.localNumber}
-        value={inputs.localNumber}
-        onChange={handleInputChange}    
-      />
-      <label>Número</label>
+              </div>
+              <div className="second-param">
 
-      <input 
-        type="Cidade" 
-        name="city"
-        defaultValue={editedClient.city}
-        value={inputs.city}
-        onChange={handleInputChange} 
-      />
-      <label>Cidade</label>
-      
-      <select
-        onChange={handleInputChange}
-        name="stateName"
-        defaultValue={editedClient.stateName}
-        value={inputs.stateName}
-      >
-        {states.map(state => (
-          <option key={state.id}>{state.nome}</option>
-        ))}
-      </select>
+                {inputs.clientType === "" ?
+                  <label></label>
+                  : inputs.clientType === 'Pessoa Jurídica' ?
+                    <label>Razão Social</label>
+                    :
+                    <label>Sobrenome</label>
+                }
+                <input
+                  type="text"
+                  defaultValue={editedClient.secondParamName}
+                  name="secondParamName"
+                  value={inputs.secondParamName}
+                  onChange={handleInputChange}
+                />
 
-      <input 
-        type="time" 
-        name="time"
-        defaultValue={editedClient.time}
-        value={inputs.time}
-        onChange={handleInputChange} 
-      />
-      <label>Horário Abertura</label> 
+              </div>
+            </div>
 
-      <input 
-        type="date"
-        name="date" 
-        defaultValue={editedClient.date}
-        value={inputs.date}
-        onChange={handleInputChange}
-      />
-      <label>Dia de Atendimento</label>
+            <div className="contact">
 
-      <input
-        type="radio"
-        name="useCar"
-        defaultValue={editedClient.useCar}
-        checked={useCar}
-        onClick={() => setUseCar(!useCar)}
-      /> Carro
-      <input
-        type="radio"
-        name="useTruck"
-        defaultValue={editedClient.useTruck}
-        checked={useTruck}
-        onClick={() => setUseTruck(!useTruck)}
-      /> Caminhão
-      <input
-        type="radio"
-        name="useMotorcycle"
-        defaultValue={editedClient.useMotorcycle}
-        checked={useMotorcycle}
-        onClick={() => setUseMotorcycle(!useMotorcycle)}
-      /> Moto
+              <div className="document">
+                {inputs.clientType === "" ?
+                  <label></label>
+                  : inputs.clientType === 'Pessoa Jurídica' ?
+                    <label>CNPJ</label>
+                    :
+                    <label>CPF</label>
+                }
+                <input
+                  type="text"
+                  defaultValue={editedClient.document}
+                  name="document"
+                  value={inputs.document}
+                  onChange={handleInputChange}
+                />
+              </div>
 
-    <button type="submit">Enviar</button>
-    </form>
+              <div className="email">
+                <label>E-mail</label>
+                <input
+                  type="email"
+                  name="email"
+                  defaultValue={editedClient.email}
+                  value={inputs.email}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="phone">
+                <label>Telefone</label>
+                <input
+                  type="text"
+                  name="phone"
+                  defaultValue={editedClient.phone}
+                  value={inputs.phone}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+
+            <div className="address-init">
+
+              <div className="cep">
+
+                <label>CEP</label>
+                <input
+                  type="text"
+                  name="cep"
+                  defaultValue={editedClient.cep}
+                  value={inputs.cep}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="street">
+
+                <label>Rua</label>
+                <input
+                  type="Rua"
+                  name="street"
+                  defaultValue={editedClient.street}
+                  value={inputs.street}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="localNumber">
+                <label>Número</label>
+                <input
+                  type="text"
+                  name="localNumber"
+                  defaultValue={editedClient.localNumber}
+                  value={inputs.localNumber}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+
+            <div className="district">
+
+              <div className="city">
+                <label>Cidade</label>
+                <input
+                  type="Cidade"
+                  name="city"
+                  defaultValue={editedClient.city}
+                  value={inputs.city}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="state">
+
+                <label>Estado</label>
+                <select
+                  onChange={handleInputChange}
+                  defaultValue={editedClient.stateName}
+                  name="stateName"
+                  value={inputs.stateName}
+                >
+                  {states.map(state => (
+                    <option key={state.id}>{state.nome}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+
+            <div className="attend">
+              <div className="time">
+                <label>Horário Abertura</label>
+                <input
+                  type="time"
+                  name="time"
+                  defaultValue={editedClient.time}
+                  value={inputs.time}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="date">
+                <label>Dia de Atendimento</label>
+                <input
+                  type="date"
+                  name="date"
+                  defaultValue={editedClient.date}
+                  value={inputs.date}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+
+            <div className="vehicle">
+
+              <label>
+                <input
+                  type="radio"
+                  name="useCar"
+                  defaultChecked={editedClient.useCar}
+                  checked={useCar}
+                  onClick={() => setUseCar(!useCar)}
+                /> Carro
+              </label>
+
+              <label htmlFor="">
+                <input
+                  type="radio"
+                  name="useTruck"
+                  defaultChecked={editedClient.useCar}
+                  checked={useTruck}
+                  onClick={() => setUseTruck(!useTruck)}
+                /> Caminhão
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="useMotorcycle"
+                  defaultChecked={editedClient.useMotorcycle}
+                  checked={useMotorcycle}
+                  onClick={() => setUseMotorcycle(!useMotorcycle)}
+                />Moto
+              </label>
+            </div>
+          </div>
+
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
       </Modal>
   );
 }

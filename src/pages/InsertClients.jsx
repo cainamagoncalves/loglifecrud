@@ -58,6 +58,7 @@ export function InsertClients() {
       useMotorcycle: useMotorcycle,
     })
 
+    toast.success('Cliente cadastrado com sucesso!')
     e.target.reset()
     setInputs('')
   }
@@ -112,9 +113,9 @@ export function InsertClients() {
                 {inputs.clientType === "" ?
                   <label></label>
                   : inputs.clientType === 'Pessoa Jurídica' ?
-                    <label>Nome Fantasia</label>
+                    <label>Empresa</label>
                     :
-                    <label>Nome do Cliente</label>
+                    <label>Nome</label>
                 }
                 <input
                   type="text"
