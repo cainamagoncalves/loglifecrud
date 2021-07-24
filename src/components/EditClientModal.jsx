@@ -77,6 +77,7 @@ export function EditClientModal({isOpen, onRequestClose}) {
       </button>
 
     <div id="insert">
+      <h2>Você está editando {editedClient.name}</h2>
         <form onSubmit={handleEditClient}>
           <div className="personal-data">
 

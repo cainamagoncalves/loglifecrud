@@ -68,6 +68,8 @@ export function InsertClients() {
     <>
       <Header />
       <div id="insert">
+
+        <h2>Cadastro de clientes</h2>
         <form onSubmit={handlCreateNewClient}>
           <div className="personal-data">
 
