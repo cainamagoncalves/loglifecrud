@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import Modal from 'react-modal'
 import { ClientsContext } from '../ClientsContexts';
 import { apiStates } from '../services/api';
+import closeImg from '../assets/images/fechar.svg'
 
 import '../styles/insertClients.scss'
 
@@ -17,7 +18,7 @@ export function EditClientModal({isOpen, onRequestClose}) {
 
   const [states, setStates] = useState([])
 
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState(false)
   const [useCar, setUseCar] = useState(false)
   const [useTruck, setUseTruck] = useState(false)
   const [useMotorcycle, setUseMotorcycle] = useState(true)
@@ -53,6 +54,7 @@ export function EditClientModal({isOpen, onRequestClose}) {
 
     e.target.reset()
     setInputs('')
+    setStatus(false)
     setUseCar(false)
     setUseTruck(false)
     setUseMotorcycle(true)
@@ -66,7 +68,13 @@ export function EditClientModal({isOpen, onRequestClose}) {
         overlayClassName="react-modal-overlay"
         className="react-modal-class"
       >
-    
+      <button
+        type="button"
+        onClick={onRequestClose}
+        className="react-modal-close"
+      ><img src={closeImg} alt="Fechar modal" />
+
+      </button>
 
     <div id="insert">
         <form onSubmit={handleEditClient}>
@@ -88,9 +96,8 @@ export function EditClientModal({isOpen, onRequestClose}) {
                 <span className="radio-input">
                   <input
                     type="radio"
-                    defaultChecked={editedClient.status}
-                    checked={status === 'Ativo'}
-                    onChange={() => setStatus('Ativo')}
+                    checked={status === true}
+                    onChange={() => setStatus(true) }
                   />
                   <span className="radio-label"> Ativo</span>
                 </span>
@@ -101,9 +108,8 @@ export function EditClientModal({isOpen, onRequestClose}) {
                 <span className="radio-input">
                   <input
                     type="radio"
-                    defaultChecked={editedClient.status}
-                    checked={status === 'Inativo'}
-                    onChange={() => setStatus('Inativo')}
+                    checked={status === false}
+                    onChange={() => setStatus(false)}
                   />
                   <span className="radio-label"> Inativo</span>
                 </span>
@@ -286,29 +292,26 @@ export function EditClientModal({isOpen, onRequestClose}) {
 
               <label>
                 <input
-                  type="radio"
+                  type="checkbox"
                   name="useCar"
-                  defaultChecked={editedClient.useCar}
-                  checked={useCar}
+                  defaultChecked={useCar === true}
                   onClick={() => setUseCar(!useCar)}
                 /> Carro
               </label>
 
-              <label htmlFor="">
+              <label>
                 <input
-                  type="radio"
+                  type="checkbox"
                   name="useTruck"
-                  defaultChecked={editedClient.useCar}
-                  checked={useTruck}
+                  defaultChecked={useTruck === true}
                   onClick={() => setUseTruck(!useTruck)}
                 /> Caminhão
               </label>
               <label>
                 <input
-                  type="radio"
+                  type="checkbox"
                   name="useMotorcycle"
-                  defaultChecked={editedClient.useMotorcycle}
-                  checked={useMotorcycle}
+                  defaultChecked={useMotorcycle === true}
                   onClick={() => setUseMotorcycle(!useMotorcycle)}
                 />Moto
               </label>

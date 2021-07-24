@@ -32,7 +32,7 @@ export function LoginPage() {
       }
 
     } catch {
-      toast.error("Erro!")
+      toast.error("Erro ao fazer o login!")
     }
 
   }

@@ -15,7 +15,7 @@ export function ClientsProvider({children}) {
   useEffect(() => {
       api.get('/clients')
         .then(res => setClients(res.data))
-  }, [clients])
+  }, [])
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem('user');

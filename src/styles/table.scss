@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     table {
         max-width: 100%;
@@ -69,6 +70,38 @@
             
         }
         
+    }
+    .pagination {
+        display: flex;
+        margin: 1rem auto;
+        list-style: none;
+        outline: none;
+
+        .active > a {
+            background: #47ccde;
+            border-color: #47ccde;
+            color: #fff;
+
+            transition: filter 0.2s;
+
+            &:hover {
+                filter: brightness(0.9)
+            }
+        }
+
+        li > a {
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            outline: none;
+            cursor: pointer;
+            background: #fff;
+
+            transition: filter 0.2s;
+
+            &:hover {
+                filter: brightness(0.9)
+            }
+        }
     }
 }
 

@@ -86,8 +86,8 @@ export function InsertClients() {
                 <span className="radio-input">
                   <input
                     type="radio"
-                    checked={status === 'Ativo'}
-                    onChange={() => setStatus('Ativo')}
+                    checked={status === true}
+                    onChange={() => setStatus(true)}
                   />
                   <span className="radio-label"> Ativo</span>
                 </span>
@@ -98,8 +98,8 @@ export function InsertClients() {
                 <span className="radio-input">
                   <input
                     type="radio"
-                    checked={status === 'Inativo'}
-                    onChange={() => setStatus('Inativo')}
+                    checked={status === false}
+                    onChange={() => setStatus(false)}
                   />
                   <span className="radio-label"> Inativo</span>
                 </span>
@@ -272,26 +272,26 @@ export function InsertClients() {
 
               <label>
                 <input
-                  type="radio"
+                  type="checkbox"
                   name="useCar"
-                  checked={useCar}
+                  defaultChecked={useCar}
                   onClick={() => setUseCar(!useCar)}
                 /> Carro
               </label>
 
               <label htmlFor="">
                 <input
-                  type="radio"
+                  type="checkbox"
                   name="useTruck"
-                  checked={useTruck}
+                  defaultChecked={useTruck}
                   onClick={() => setUseTruck(!useTruck)}
                 /> Caminhão
               </label>
               <label>
                 <input
-                  type="radio"
+                  type="checkbox"
                   name="useMotorcycle"
-                  checked={useMotorcycle}
+                  defaultChecked={useMotorcycle}
                   onClick={() => setUseMotorcycle(!useMotorcycle)}
                 />Moto
               </label>
