@@ -8,8 +8,8 @@ export function Header() {
     <header id="header">
       <div>
         <img src={logLifeImg} alt="Imagem Log Life" />
-        <a href="/">Cadastro</a>
-        <a href="/">Tabela</a>
+        <Link to="/home">Cadastro</Link>
+        <Link to="/clients">Tabela</Link>
       </div>
     </header>
   );

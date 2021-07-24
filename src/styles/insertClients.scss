@@ -1,68 +1,226 @@
-form {
-  width: 100%;
-  margin-top: 2rem;
+#insert {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  .personal-data {
-    margin-top: 2rem 0;
-
-    width: 100%;
+  form {
+    width: 90%;
     max-width: 800px;
+    margin-top: 2rem;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    select {
-      width: 50%;
-      border-radius: 0.25rem;
-      border: 1px solid #ccc;
-      border-radius: 0.25rem;
-      text-align: center;
-    }
-    
-    .radio {
-      width: 50%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-around;
-    }
-
-    .nameset {
+    .personal-data {
+      margin-top: 2rem 0;
       width: 100%;
-      margin-top: 1rem;
+      max-width: 800px;
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      flex-wrap: wrap;
 
-      input {
+      select {
+        width: 50%;
         border-radius: 0.25rem;
         border: 1px solid #ccc;
-        line-height: 2rem;
-
-        &:focus {
-          outline: none;
-        }
+        border-radius: 0.25rem;
+        text-align: center;
       }
 
-      .name {
-        width: 45%;
-        input {
-          width: 100%;
-          display: block;
-        }
+      .radio {
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
       }
 
-      .second-param {
-        width: 45%;
-        align-self: flex-end;
-        input {
-          width: 100%;
-          display: block
+      .nameset {
+        width: 100%;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
+        input {
+          border-radius: 0.25rem;
+          border: 1px solid #ccc;
+          line-height: 2rem;
+
+          &:focus {
+            outline: none;
+          }
         }
+
+        .name {
+          width: 45%;
+          input {
+            width: 100%;
+          }
+        }
+
+        .second-param {
+          width: 45%;
+          input {
+            width: 100%;
+          }
+        }
+      }
+      .contact {
+        width: 100%;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+          border-radius: 0.25rem;
+          border: 1px solid #ccc;
+          line-height: 2rem;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        .document {
+          width: 33%;
+          input {
+            width: 95%;
+          }
+        }
+        .email {
+          width: 33%;
+          input {
+            width: 95%;
+          }
+        }
+        .phone {
+          width: 34%;
+          input {
+            width: 100%;
+          }
+        }
+      }
+      .address-init {
+        width: 100%;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+          border-radius: 0.25rem;
+          border: 1px solid #ccc;
+          line-height: 2rem;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        .cep {
+          width: 40%;
+          input {
+            width: 95%;
+          }
+        }
+        .street {
+          width: 40%;
+          input {
+            width: 95%;
+          }
+        }
+        .localNumber {
+          width: 20%;
+          input {
+            width: 100%;
+          }
+        }
+      }
+      .district {
+        width: 100%;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+          border-radius: 0.25rem;
+          border: 1px solid #ccc;
+          line-height: 2rem;
+
+          &:focus {
+            outline: none;
+          }
+        }
+        .city {
+          width: 50%;
+          input {
+            width: 95%;
+          }
+        }
+        .state {
+          width: 50%;
+          select {
+            width: 100%;
+          }
+        }
+      }
+      .attend {
+        width: 100%;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+          border-radius: 0.25rem;
+          border: 1px solid #ccc;
+          line-height: 2rem;
+
+          &:focus {
+            outline: none;
+          }
+        }
+        .time {
+          width: 50%;
+          input {
+            width: 90%;
+          }
+        }
+        .date {
+          width: 50%;
+          input {
+            width: 100%;
+          }
+        }
+      }
+      .vehicle {
+        width: 100%;
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        input {
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    button {
+      border: 1px solid #ccc;
+      margin: 1.5rem;
+      border-radius: 0.25rem;
+      width: 8rem;
+      background: #0cace4;
+      color: #fff;
+
+      transition: filter 0.2s;
+
+      &:hover {
+        filter: brightness(0.9);
       }
     }
   }

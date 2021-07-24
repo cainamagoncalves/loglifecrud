@@ -66,202 +66,240 @@ export function InsertClients() {
   return (
     <>
       <Header />
-      <form onSubmit={async () => handlCreateNewClient}>
-        <div className="personal-data">
+      <div id="insert">
+        <form onSubmit={handlCreateNewClient}>
+          <div className="personal-data">
 
-          <select
-            onChange={handleInputChange}
-            name="clientType"
-            value={inputs.clientType}
-          >
-            <option value=""></option>
-            <option value="Pessoa Jurídica">Pessoa Jurídica</option>
-            <option value="Pessoa Física">Pessoa Física</option>
-          </select>
+            <select
+              onChange={handleInputChange}
+              name="clientType"
+              value={inputs.clientType}
+            >
+              <option value=""></option>
+              <option value="Pessoa Jurídica">Pessoa Jurídica</option>
+              <option value="Pessoa Física">Pessoa Física</option>
+            </select>
 
-          <div className="radio">
-            <label className="radio-class">
-              <span className="radio-input">
+            <div className="radio">
+              <label className="radio-class">
+                <span className="radio-input">
+                  <input
+                    type="radio"
+                    checked={status === 'Ativo'}
+                    onChange={() => setStatus('Ativo')}
+                  />
+                  <span className="radio-label"> Ativo</span>
+                </span>
+              </label>
+
+
+              <label className="radio-class">
+                <span className="radio-input">
+                  <input
+                    type="radio"
+                    checked={status === 'Inativo'}
+                    onChange={() => setStatus('Inativo')}
+                  />
+                  <span className="radio-label"> Inativo</span>
+                </span>
+              </label>
+            </div>
+
+            <div className="nameset">
+
+
+              <div className="name">
+                {inputs.clientType === "" ?
+                  <label></label>
+                  : inputs.clientType === 'Pessoa Jurídica' ?
+                    <label>Nome Fantasia</label>
+                    :
+                    <label>Nome do Cliente</label>
+                }
+                <input
+                  type="text"
+                  value={inputs.name}
+                  name="name"
+                  onChange={handleInputChange}
+                />
+
+              </div>
+              <div className="second-param">
+
+                {inputs.clientType === "" ?
+                  <label></label>
+                  : inputs.clientType === 'Pessoa Jurídica' ?
+                    <label>Razão Social</label>
+                    :
+                    <label>Sobrenome</label>
+                }
+                <input
+                  type="text"
+                  name="secondParamName"
+                  value={inputs.secondParamName}
+                  onChange={handleInputChange}
+                />
+
+              </div>
+            </div>
+
+            <div className="contact">
+
+              <div className="document">
+                {inputs.clientType === "" ?
+                  <label></label>
+                  : inputs.clientType === 'Pessoa Jurídica' ?
+                    <label>CNPJ</label>
+                    :
+                    <label>CPF</label>
+                }
+                <input
+                  type="text"
+                  name="document"
+                  value={inputs.document}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="email">
+                <label>E-mail</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={inputs.email}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="phone">
+                <label>Telefone</label>
+                <input
+                  type="text"
+                  name="phone"
+                  value={inputs.phone}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+
+            <div className="address-init">
+
+              <div className="cep">
+
+                <label>CEP</label>
+                <input
+                  type="text"
+                  name="cep"
+                  value={inputs.cep}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="street">
+
+                <label>Rua</label>
+                <input
+                  type="Rua"
+                  name="street"
+                  value={inputs.street}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="localNumber">
+                <label>Número</label>
+                <input
+                  type="text"
+                  name="localNumber"
+                  value={inputs.localNumber}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+
+            <div className="district">
+
+              <div className="city">
+                <label>Cidade</label>
+                <input
+                  type="Cidade"
+                  name="city"
+                  value={inputs.city}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="state">
+
+                <label>Estado</label>
+                <select
+                  onChange={handleInputChange}
+                  name="stateName"
+                  value={inputs.stateName}
+                >
+                  {states.map(state => (
+                    <option key={state.id}>{state.nome}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+
+            <div className="attend">
+              <div className="time">
+                <label>Horário Abertura</label>
+                <input
+                  type="time"
+                  name="time"
+                  value={inputs.time}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="date">
+                <label>Dia de Atendimento</label>
+                <input
+                  type="date"
+                  name="date"
+                  value={inputs.date}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+
+            <div className="vehicle">
+
+              <label>
                 <input
                   type="radio"
-                  checked={status === 'Ativo'}
-                  onChange={() => setStatus('Ativo')}
-                />
-                <span className="radio-label"> Ativo</span>
-              </span>
-            </label>
+                  name="useCar"
+                  checked={useCar}
+                  onClick={() => setUseCar(!useCar)}
+                /> Carro
+              </label>
 
-
-            <label className="radio-class">
-              <span className="radio-input">
+              <label htmlFor="">
                 <input
                   type="radio"
-                  checked={status === 'Inativo'}
-                  onChange={() => setStatus('Inativo')}
-                />
-                <span className="radio-label"> Inativo</span>
-              </span>
-            </label>
-          </div>
-
-          <div className="nameset">
-
-
-            <div className="name">
-              {inputs.clientType === "" ?
-                <label></label>
-                : inputs.clientType === 'Pessoa Jurídica' ?
-                  <label>Nome Fantasia</label>
-                  :
-                  <label>Nome do Cliente</label>
-              }
-              <input
-                type="text"
-                value={inputs.name}
-                name="name"
-                onChange={handleInputChange}
-              />
-
-            </div>
-            <div className="second-param">
-
-              {inputs.clientType === "" ?
-                <label></label>
-                : inputs.clientType === 'Pessoa Jurídica' ?
-                  <label>Razão Social</label>
-                  :
-                  <label>Sobrenome</label>
-              }
-              <input
-                type="text"
-                name="secondParamName"
-                value={inputs.secondParamName}
-                onChange={handleInputChange}
-              />
-
+                  name="useTruck"
+                  checked={useTruck}
+                  onClick={() => setUseTruck(!useTruck)}
+                /> Caminhão
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="useMotorcycle"
+                  checked={useMotorcycle}
+                  onClick={() => setUseMotorcycle(!useMotorcycle)}
+                />Moto
+              </label>
             </div>
           </div>
 
-          <div className="contact">
-
-
-            {inputs.clientType === "" ?
-              <label></label>
-              : inputs.clientType === 'Pessoa Jurídica' ?
-                <label>CNPJ</label>
-                :
-                <label>CPF</label>
-            }
-            <input
-              type="text"
-              name="document"
-              value={inputs.document}
-              onChange={handleInputChange}
-            />
-
-            <input
-              type="email"
-              name="email"
-              value={inputs.email}
-              onChange={handleInputChange}
-            />
-            <label>E-mail</label>
-
-            <input
-              type="text"
-              name="phone"
-              value={inputs.phone}
-              onChange={handleInputChange}
-            />
-            <label>Telefone</label>
-          </div>
-        </div>
-
-        <div className="address">
-
-          <input
-            type="text"
-            name="cep"
-            value={inputs.cep}
-            onChange={handleInputChange}
-          />
-          <label>CEP</label>
-
-          <input
-            type="Rua"
-            name="street"
-            value={inputs.street}
-            onChange={handleInputChange}
-          />
-          <label>Rua</label>
-
-          <input
-            type="text"
-            name="localNumber"
-            value={inputs.localNumber}
-            onChange={handleInputChange}
-          />
-          <label>Número</label>
-
-          <input
-            type="Cidade"
-            name="city"
-            value={inputs.city}
-            onChange={handleInputChange}
-          />
-          <label>Cidade</label>
-
-          <select
-            onChange={handleInputChange}
-            name="stateName"
-            value={inputs.stateName}
-          >
-            {states.map(state => (
-              <option key={state.id}>{state.nome}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="attend">
-
-          <input
-            type="time"
-            name="time"
-            value={inputs.time}
-            onChange={handleInputChange}
-          />
-          <label>Horário Abertura</label>
-
-          <input
-            type="date"
-            name="date"
-            value={inputs.date}
-            onChange={handleInputChange}
-          />
-          <label>Dia de Atendimento</label>
-
-          <input
-            type="radio"
-            name="useCar"
-            checked={useCar}
-            onClick={() => setUseCar(!useCar)}
-          /> Carro
-          <input
-            type="radio"
-            name="useTruck"
-            checked={useTruck}
-            onClick={() => setUseTruck(!useTruck)}
-          /> Caminhão
-          <input
-            type="radio"
-            name="useMotorcycle"
-            checked={useMotorcycle}
-            onClick={() => setUseMotorcycle(!useMotorcycle)}
-          /> Moto
-        </div>
-
-        <button type="submit">Enviar</button>
-      </form>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
     </>
   );
 }
